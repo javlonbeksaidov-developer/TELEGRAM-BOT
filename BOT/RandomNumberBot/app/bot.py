@@ -30,15 +30,12 @@ def handle_buttons(msg):
             number = random.randint(0, 10000)
             bot.reply_to(msg, f"Random number: {number}")
         case "Other":
-            bot.reply_to(msg, "Entry: start-stop. (0-10)")
-
-
-@bot.message_handler(func=lambda _: True)
-def start_stop(msg):
-    start, stop = map(int, msg.split("-"))
-    if start <= stop:
-        number = random.randint(start, stop)
-        bot.reply_to(msg, f"[{start}-{stop}] -> Random number: {number}")
+            bot.reply_to(msg, "Random number: start-stop. (0-10)")
+        case _:
+            start, stop = map(int, msg.text.split("-"))
+            if start <= stop:
+                number = random.randint(start, stop)
+                bot.reply_to(msg, f"[{start}-{stop}] -> Random number: {number}")
 
 
 print("Bot is running...")
