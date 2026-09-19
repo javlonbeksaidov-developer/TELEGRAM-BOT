@@ -32,7 +32,7 @@ Telegram bot development bo‘yicha amaliy loyihalar to‘plami. Ushbu repositor
 # 🤖 Telegram Bots Table
 
 | № | Bot Name | Description | Technologies | Database | Link | Date |
-|:-:|:--------:|:------------|:------------:|:--------:|:----:|:----:|
+|:-:|:--------:|:-----------:|:------------:|:--------:|:----:|:----:|
 | 1 | EchoBot | Xabarlarni qaytaradigan sodda bot | Python, pyTelegramBotApi | None | [@nt_telegram_bot](https://t.me/nt_telegram_bot) | 18.09.2026 |
 | 2 | GoogleTranslatorBot | Bot yuborilgan xabarni en-uz-en tarjima qiladi. | Python, pyTelegramBotApi, googletrans | None | [@google_translator_js_bot](https://t.me/google_translator_js_bot) | 19.09.2026 |
 |-|-|-|-|-|-|-|
