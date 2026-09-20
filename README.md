@@ -22,6 +22,10 @@
 
 Telegram bot development bo‘yicha amaliy loyihalar to‘plami. Ushbu repository orqali **Python** va **Telebot** yordamida turli g‘oyalar sinab ko‘riladi, yangi texnologiyalar o‘rganiladi va real funksional botlar ishlab chiqiladi.
 
+**Python** | **pyTelegramBotAPI** | **SqlAlchemy**
+
+**PostgreSQL** | **SQLite**
+
 
 </td>
 </tr>
@@ -31,10 +35,10 @@ Telegram bot development bo‘yicha amaliy loyihalar to‘plami. Ushbu repositor
 
 # 🤖 Telegram Bots Table
 
-| № | Bot Name | Description | Technologies | Database | Link | Date |
-|:-:|:--------:|:-----------:|:------------:|:--------:|:----:|:----:|
-| 1 | EchoBot | Xabarlarni qaytaradigan sodda bot | Python, pyTelegramBotApi | None | [@nt_telegram_bot](https://t.me/nt_telegram_bot) | 18.09.2026 |
-| 2 | GoogleTranslatorBot | Bot yuborilgan xabarni en-uz-en tarjima qiladi. | Python, pyTelegramBotApi, googletrans | None | [@google_translator_js_bot](https://t.me/google_translator_js_bot) | 19.09.2026 |
-| 3 | RandomNumberBot | Telegram botdagi tugmalarni o'rganish. Tasodiy sonlar chiqarish. | Python, pyTelegramBotApi | None | [@random_number_js_bot](https://t.me/random_number_js_bot) | 19.09.2026 |
-| 4 | MusicBot | Musiqalar uchun telegram bot | Python, pyTelegramBotApi, Sqlalchemy | SQLite| [@music_dev_js_bot](https://t.me/music_dev_js_bot) | 20.09.2026 |
+| № | Bot Name | Description | Database | Link | Date |
+|:-:|:--------:|:-----------:|:--------:|:----:|:----:|
+| 1 | EchoBot | Xabarlarni qaytaradigan sodda bot | None | [@nt_telegram_bot](https://t.me/nt_telegram_bot) | 18.09.2026 |
+| 2 | GoogleTranslatorBot | Bot yuborilgan xabarni en-uz-en tarjima qiladi. | None | [@google_translator_js_bot](https://t.me/google_translator_js_bot) | 19.09.2026 |
+| 3 | RandomNumberBot | Telegram botdagi tugmalarni o'rganish. Tasodiy sonlar chiqarish. | None | [@random_number_js_bot](https://t.me/random_number_js_bot) | 19.09.2026 |
+| 4 | MusicBot | Musiqalar uchun telegram bot | SQLite| [@music_dev_js_bot](https://t.me/music_dev_js_bot) | 20.09.2026 |
 | 5 |-|-|-|-|-|-|
