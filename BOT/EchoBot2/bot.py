@@ -18,6 +18,20 @@ def menu():
     return markup
 
 
+def inline():
+    markup = types.InlineKeyboardMarkup()
+
+    btn1 = types.InlineKeyboardButton(text="registration", callback_data="register")
+    btn2 = types.InlineKeyboardButton(text="Upload Movie", callback_data="upload")
+    btn3 = types.InlineKeyboardButton(text="Find Movie", callback_data="find")
+
+    markup.add(btn1)
+    markup.add(btn2)
+    markup.add(btn3)
+
+    return markup
+
+
 @bot.message_handler(commands=["start"])
 def start(msg):
     bot.send_message(
@@ -29,8 +43,18 @@ def start(msg):
 
 @bot.message_handler(func=lambda _: True)
 def message(msg):
-    bot.reply_to(msg, msg.text)
+    bot.reply_to(msg, msg.text, reply_markup=inline())
 
+
+@bot.callback_query_handler(func=lambda call: call.data == "register")
+def call_register(call):
+    bot.answer_callback_query(call.id, text="Register !!!")
+    bot.send_message(call.message.chat.id, text="Success!")
+
+@bot.callback_query_handler(func=lambda call: call.data == "upload")
+def call_upload(call):
+    bot.answer_callback_query(call.id, text="Upload !!!")
+    bot.send_message(call.message.chat.id, text="Success!")
 
 @bot.message_handler(
     content_types=["photo", "document", "contact", "location", "voice", "audio"]
