@@ -40,5 +40,7 @@ Telegram bot development bo‘yicha amaliy loyihalar to‘plami. Ushbu repositor
 | 1 | EchoBot | Xabarlarni qaytaradigan sodda bot | None | [@nt_telegram_bot](https://t.me/nt_telegram_bot) | 18.09.2026 |
 | 2 | GoogleTranslatorBot | Bot yuborilgan xabarni en-uz-en tarjima qiladi. | None | [@google_translator_js_bot](https://t.me/google_translator_js_bot) | 19.09.2026 |
 | 3 | RandomNumberBot | Telegram botdagi tugmalarni o'rganish. Tasodiy sonlar chiqarish. | None | [@random_number_js_bot](https://t.me/random_number_js_bot) | 19.09.2026 |
-| 4 | MusicBot | Musiqalar uchun telegram bot | SQLite| [@music_dev_js_bot](https://t.me/music_dev_js_bot) | 20.09.2026 |
-| 5 |-|-|-|-|-|-|
+| 4 | MusicBot | Musiqalar uchun telegram bot | PostgreSQL | [@music_dev_js_bot](https://t.me/music_dev_js_bot) | 20.09.2026 |
+| 5 | MovieBot | Kinolar uchun telegram bot | Sqlite | [@movie_dev_js_bot](https://t.me/movie_dev_js_bot) | 23.09.2026 |
+| 6 | MovieAdminBot | Kinolar uchun telegram botning admin bot | Sqlite | [@movie_admin_dev_js_bot](https://t.me/movie_admin_dev_js_bot) | 23.09.2026 |
+| 7 |-|-|-|-|-|-|
