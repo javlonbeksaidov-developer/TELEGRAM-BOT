@@ -5,6 +5,7 @@ from app.db.db import Base, engine, get_db
 from app.menu.menu import Menu
 from app.models.model_movie import Movies  # noqa: F401
 from app.models.model_user import Users
+from app.services.service_user import UserServices
 
 TOKEN_BOT = config("TOKEN_BOT")
 ADMIN_ID = config("ADMIN_ID")
@@ -21,29 +22,14 @@ def start(msg):
     last_name = msg.from_user.last_name
     username = msg.from_user.username
 
-    with get_db() as db:
-        user = db.query(Users).filter(Users.user_id == msg.from_user.id).first()
+    data = {
+        "user_id": user_id,
+        "first_name": first_name,
+        "last_name": last_name,
+        "username": username,
+    }
 
-        if not user:
-            user = Users(
-                first_name=first_name,
-                last_name=last_name,
-                user_id=user_id,
-                username=username,
-            )
-            db.add(user)
-            db.commit()
-            db.refresh(user)
-        else:
-            if (
-                user.username != username
-                or user.first_name != first_name
-                or user.last_name != last_name
-            ):
-                user.username = username
-                user.first_name = first_name
-                user.last_name = last_name
-                db.commit()
+    UserServices.save_user(data)
 
     if user_id == int(ADMIN_ID):
         bot.send_message(
