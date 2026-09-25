@@ -30,3 +30,19 @@ class UserServices:
                     db.commit()
 
             return user
+
+    @staticmethod
+    def users_db():
+        with get_db() as db:
+            return db.query(Users).all()
+
+    @staticmethod
+    def user_id_db(id):
+        with get_db() as db:
+            return db.query(Users).filter(Users.user_id == id).first()
+
+    @staticmethod
+    def statistic_user_count():
+        with get_db() as db:
+            users = db.query(Users).all()
+            return len(users)
