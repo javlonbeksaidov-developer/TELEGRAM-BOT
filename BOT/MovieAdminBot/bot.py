@@ -61,37 +61,40 @@ def add_movie(msg):
 @bot.message_handler(content_types=["video"])
 def call_add_movie(msg):
     if msg.from_user.id == int(ADMIN_ID):
-        code = MovieService.code_gen_id()
+        check = MovieService.check_movie(msg.video.file_id)
+        if check:
+            bot.reply_to(msg, "Bu vedio bazada mavjud.")
+        else:
+            code = MovieService.code_gen_id()
 
-        caption = msg.caption or ""
-        title = caption
-        description = ""
+            caption = msg.caption or ""
+            title = caption
+            description = ""
 
-        file_id = msg.video.file_id
-        duration = msg.video.duration
-        file_size = msg.video.file_size
+            file_id = msg.video.file_id
+            duration = msg.video.duration
+            file_size = msg.video.file_size
 
-        views_count = 0
+            views_count = 0
 
-        data = {
-            "code": code,
-            "title": title,
-            "description": description,
-            "file_id": file_id,
-            "duration": duration,
-            "file_size": file_size,
-            "views_count": views_count,
-        }
-        movie = MovieService.save_movie(data)
+            data = {
+                "code": code,
+                "title": title,
+                "description": description,
+                "file_id": file_id,
+                "duration": duration,
+                "file_size": file_size,
+                "views_count": views_count,
+            }
+            movie = MovieService.save_movie(data)
 
-        if movie:
-            bot.send_video(
-                CHANNEL_ID,
-                movie.file_id,
-                caption=(
-                    f"🎬 {movie.title}\n🔢 Code: {movie.code}\n👁 Views: {movie.views_count}"
-                ),
-            )
+            if movie:
+                bot.reply_to(msg, f"Movie Code: {movie.code}")
+                bot.send_video(
+                    CHANNEL_ID,
+                    movie.file_id,
+                    caption=(f"🎬 {movie.title}\n🔢 Code: {movie.code}"),
+                )
 
 
 @bot.message_handler(func=lambda msg: msg.text == "SHOW MOVIE ALL")
@@ -101,7 +104,7 @@ def show_movie_all(msg):
         if movies:
             bot.reply_to(msg, f"<<< MOVIES >>> [ {len(movies)} dona ]")
             for i, movie in enumerate(movies, start=1):
-                bot.reply_to(msg, f"{i}. Code: {movie.code}")
+                bot.send_message(msg.chat.id, f"{i}. Code: {movie.code}")
         else:
             bot.reply_to(msg, "Hali kino mavjud emas.")
 
@@ -118,7 +121,12 @@ def show_movie_by_id_call(msg):
         movie = MovieService.show_movie_by_id_db(int(msg.text))
 
         if movie:
-            bot.reply_to(msg, f"{movie.title}\nCode: {movie.code}")
+            bot.reply_to(
+                msg,
+                f"🎬 {movie['title']}\n"
+                f"🔢 Code: {movie['code']}\n"
+                f"👁 Views: {movie['views_count']}",
+            )
         else:
             bot.reply_to(msg, "Movie not found")
 

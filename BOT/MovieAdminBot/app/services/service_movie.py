@@ -54,7 +54,25 @@ class MovieService:
     @staticmethod
     def show_movie_by_id_db(code):
         with get_db() as db:
-            return db.query(Movies).filter(Movies.code == code).first()
+            movie = db.query(Movies).filter(Movies.code == code).first()
+
+            if not movie:
+                return None
+
+            movie.views_count += 1
+            db.commit()
+
+            return {
+                "title": movie.title,
+                "code": movie.code,
+                "file_id": movie.file_id,
+                "views_count": movie.views_count,
+            }
+
+    @staticmethod
+    def check_movie(file_id):
+        with get_db() as db:
+            return db.query(Movies).filter(Movies.file_id == file_id).first()
 
     @staticmethod
     def statistic_movie_count():
