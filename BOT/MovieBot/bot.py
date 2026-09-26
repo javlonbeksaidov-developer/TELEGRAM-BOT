@@ -27,22 +27,27 @@ def start(msg):
 
 @bot.message_handler(commands=["help"])
 def help(msg):
-    bot.send_message(msg, "Movie ID sini kiriting!\n(Misol uchun [ 17 ])")
+    bot.reply_to(msg, "Movie ID sini kiriting!\n(Misol uchun [ 1701 ])")
 
 
 @bot.message_handler(func=lambda msg: msg.text.isdigit())
-def id_movie_send(msg):
-    movie = MovieService.show_movie_by_code(int(msg.text))
+def get_movie(msg):
+    code = msg.text.strip()
 
-    if movie:
-        bot.send_video(
-            msg.chat.id,
-            movie["file_id"],
-            caption=(
-                f"🎬 {movie['title']}\n"
-                f"🔢 Code: {movie['code']}\n"
-                f"👁 Views: {movie['views_count']}"
-            ),
-        )
-    else:
-        bot.send_message(msg.chat.id, "Movie not found!")
+    movie = MovieService.show_movie_by_code(code)
+
+    if not movie:
+        bot.reply_to(msg, "Movie not found")
+        return
+
+    bot.send_video(
+        msg.chat.id,
+        movie.file_id,
+        caption=(
+            f"🎬 {movie.title}\n🔢 Code: {movie.code}\n👁 Views: {movie.views_count}"
+        ),
+    )
+
+
+print("Bot is running...")
+bot.infinity_polling()

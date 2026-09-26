@@ -13,10 +13,6 @@ class MovieService:
 
             movie.views_count += 1
             db.commit()
+            db.refresh(movie)
 
-            return {
-                "title": movie.title,
-                "code": movie.code,
-                "file_id": movie.file_id,
-                "views_count": movie.views_count,
-            }
+            return movie
