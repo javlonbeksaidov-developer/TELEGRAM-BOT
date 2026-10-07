@@ -43,4 +43,7 @@ Telegram bot development bo‘yicha amaliy loyihalar to‘plami. Ushbu repositor
 | 4 | MusicBot | Musiqalar uchun telegram bot | PostgreSQL | [@music_dev_js_bot](https://t.me/music_dev_js_bot) | 20.09.2026 |
 | 5 | MovieBot | Kinolar uchun telegram bot | PostgreSQL | [@movie_dev_js_bot](https://t.me/movie_dev_js_bot) | 23.09.2026 |
 | 6 | MovieAdminBot | Kinolar uchun telegram botning admin bot | PostgreSQL | [@movie_admin_dev_js_bot](https://t.me/movie_admin_dev_js_bot) | 23.09.2026 |
-| 7 |-|-|-|-|-|-|
+| 7 | AvtoServiceBot | Avto Service management bot | PostgreSQL | [@avto_service_di0508_bot](https://t.me/avto_service_di0508_bot) | 07.10.2026 |
+| 8 |-|-|-|-|-|
+| 9 |-|-|-|-|-|
+| 10 |-|-|-|-|-|
