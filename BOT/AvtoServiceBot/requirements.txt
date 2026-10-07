@@ -8,6 +8,7 @@ frozenlist==1.8.0
 idna==3.20
 multidict==6.9.1
 propcache==0.5.4
+psycopg2-binary==2.9.13
 pyTelegramBotAPI==4.37.0
 python-decouple==3.8
 requests==2.34.2
