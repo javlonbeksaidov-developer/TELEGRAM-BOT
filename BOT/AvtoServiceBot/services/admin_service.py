@@ -16,7 +16,15 @@ class AdminServices:
     @staticmethod
     def admin_to_user(user_id):
         with get_db() as db:
-            admin = AdminServices.is_admin(user_id)
+            admin = (
+                db.query(Users)
+                .filter(Users.user_id == user_id, Users.role == UserRoles.ADMIN)
+                .first()
+            )
+
+            if not admin:
+                return None
+
             admin.role = UserRoles.USER
             db.commit()
             db.refresh(admin)
@@ -27,4 +35,3 @@ class AdminServices:
         with get_db() as db:
             admin = db.query(Users).filter(Users.role == UserRoles.ADMIN).all()
             return len(admin)
-

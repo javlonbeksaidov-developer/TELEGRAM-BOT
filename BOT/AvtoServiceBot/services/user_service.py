@@ -44,7 +44,15 @@ class UserServices:
     @staticmethod
     def user_to_admin(user_id):
         with get_db() as db:
-            user = UserServices.is_user(user_id)
+            user = (
+                db.query(Users)
+                .filter(Users.user_id == user_id, Users.role == UserRoles.USER)
+                .first()
+            )
+
+            if not user:
+                return None
+
             user.role = UserRoles.ADMIN
             db.commit()
             db.refresh(user)

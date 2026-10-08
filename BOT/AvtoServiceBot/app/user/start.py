@@ -1,5 +1,7 @@
 from telebot import TeleBot
 
+from keyboards.admin import AdminKeyboards
+from services.admin_service import AdminServices
 from services.user_service import UserServices
 
 
@@ -19,9 +21,22 @@ def register_handlers(bot: TeleBot):
             "username": username,
         }
 
-        UserServices.save_user(data)
+        user = UserServices.save_user(data)
+        admin = AdminServices.is_admin(msg.from_user.id)
 
-        bot.send_message(
-            msg.chat.id,
-            f"Assalomu alaykum! {msg.from_user.first_name}\n🚗 Avto Service Botga xush kelibsiz.",
-        )
+        if admin:
+            bot.send_message(
+                msg.chat.id,
+                f"Welcome Capitan {msg.from_user.first_name}!",
+                reply_markup=AdminKeyboards.main_keyboard(),
+            )
+        elif user:
+            bot.send_message(
+                msg.chat.id,
+                f"Assalomu alaykum! {msg.from_user.first_name}\n🚗 Avto Service Botga xush kelibsiz.",
+            )
+        else:
+            bot.send_message(
+                msg.chat.id,
+                "...",
+            )
