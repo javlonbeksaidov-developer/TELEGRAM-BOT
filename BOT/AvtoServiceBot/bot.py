@@ -1,15 +1,21 @@
 from decouple import config
 from telebot import TeleBot
 
+from database.db import Base, engine
+from database.models import Users  # noqa: F401
+
 BOT_TOKEN = config("BOT_TOKEN")
 
 
 bot = TeleBot(BOT_TOKEN)
 
+Base.metadata.create_all(bind=engine)
 
-@bot.message_handler(commands=["start"])
-def welcome(msg):
-    bot.send_message(msg.chat.id, msg.from_user.first_name)
+from app.admin.start import register_handlers as register_admin_start
+from app.user.start import register_handlers as register_user_start
+
+register_admin_start(bot)
+register_user_start(bot)
 
 
 if __name__ == "__main__":
