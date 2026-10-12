@@ -63,5 +63,5 @@ def register_handlers(bot: TeleBot):
 
     @bot.message_handler(func=lambda msg: msg.text == "GOO")
     def goo(msg):
-        chat_id = 6467651270
-        bot.send_message(chat_id, "✅ Foydalanuvchiga ADMIN role berildi.")
+        chat_id = 5423257804
+        bot.send_message(chat_id, "@avto_service_di0508_bot")
